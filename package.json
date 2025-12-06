@@ -1,6 +1,6 @@
 {
   "name": "@jellyfish-tom/cursor-rules",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shared Cursor IDE rules and guidelines for TypeScript/React projects",
   "main": "index.js",
   "scripts": {
@@ -32,4 +32,3 @@
     "node": ">=16.0.0"
   }
 }
-
