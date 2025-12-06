@@ -9,6 +9,7 @@
    git add .
    git commit -m "Initial commit: Cursor rules package"
    gh repo create cursor-rules --public --source=. --remote=origin
+   # Or manually: git remote add origin https://github.com/jellyfish-tom/cursor-rules.git
    git push -u origin main
    ```
 

@@ -28,7 +28,7 @@ git commit -m "Initial commit: Cursor rules package"
 gh repo create cursor-rules --public --source=. --remote=origin
 
 # Or manually create on GitHub and then:
-git remote add origin https://github.com/tomasz-morawski/cursor-rules.git
+git remote add origin https://github.com/jellyfish-tom/cursor-rules.git
 git branch -M main
 git push -u origin main
 ```
@@ -40,7 +40,7 @@ Edit `package.json` and update the repository URL to match your actual GitHub us
 ```json
 "repository": {
   "type": "git",
-  "url": "git+https://github.com/YOUR_USERNAME/cursor-rules.git"
+   "url": "git+https://github.com/jellyfish-tom/cursor-rules.git"
 }
 ```
 
