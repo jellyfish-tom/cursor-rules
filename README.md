@@ -5,7 +5,7 @@ Shared Cursor IDE rules and guidelines for TypeScript/React projects.
 ## Installation
 
 ```bash
-npm install --save-dev @tomasz-morawski/cursor-rules
+npm install --save-dev @jellyfish-tom/cursor-rules
 ```
 
 The package will automatically copy the `.cursor` directory to your project root after installation via the `postinstall` script.
@@ -20,14 +20,14 @@ To update the rules in all projects:
 
 1. Update the rules in this repository
 2. Publish a new version to npm
-3. Run `npm update @tomasz-morawski/cursor-rules` in your projects
+3. Run `npm update @jellyfish-tom/cursor-rules` in your projects
 
 ## Manual Installation
 
 If you need to manually copy the rules:
 
 ```bash
-cp -r node_modules/@tomasz-morawski/cursor-rules/.cursor ./
+cp -r node_modules/@jellyfish-tom/cursor-rules/.cursor ./
 ```
 
 ## Contents
@@ -42,7 +42,7 @@ To test locally:
 ```bash
 npm link
 cd /path/to/your/project
-npm link @tomasz-morawski/cursor-rules
+npm link @jellyfish-tom/cursor-rules
 ```
 
 ## Publishing

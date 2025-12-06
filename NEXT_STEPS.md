@@ -54,16 +54,13 @@ npm login
 npm publish --access public
 ```
 
-**Note:** The package name `@tomasz-morawski/cursor-rules` requires you to have the npm organization `@tomasz-morawski` or publish as a scoped package. If you don't have an organization, you can:
-
-- Use a different name like `tomasz-morawski-cursor-rules` (unscoped)
-- Create an npm organization at https://www.npmjs.com/org/create
+**Note:** The package name uses your npm username scope `@jellyfish-tom`, which allows you to publish scoped packages without creating an organization.
 
 ### 5. Use in Your Projects
 
 ```bash
 # In any project
-npm install --save-dev @tomasz-morawski/cursor-rules
+npm install --save-dev @jellyfish-tom/cursor-rules
 ```
 
 The `.cursor` directory will be automatically created in your project root.
@@ -84,7 +81,7 @@ The `.cursor` directory will be automatically created in your project root.
    ```
 4. Update in projects:
    ```bash
-   npm update @tomasz-morawski/cursor-rules
+   npm update @jellyfish-tom/cursor-rules
    ```
 
 ## 🧪 Testing Locally
@@ -96,19 +93,19 @@ Before publishing, test locally:
 npm link
 
 # In your project
-npm link @tomasz-morawski/cursor-rules
+npm link @jellyfish-tom/cursor-rules
 ```
 
 ## 📦 Package Details
 
-- **Name**: `@tomasz-morawski/cursor-rules`
+- **Name**: `@jellyfish-tom/cursor-rules`
 - **Version**: `1.0.0`
 - **License**: MIT
 - **Postinstall**: Automatically copies `.cursor` to project root
 
 ## ⚠️ Important Notes
 
-1. **Scoped Package**: The `@tomasz-morawski` scope requires an npm organization or you'll need to change the package name
+1. **Scoped Package**: Uses your npm username scope `@jellyfish-tom` - no organization needed
 2. **File Conflicts**: The install script will overwrite existing files in `.cursor/` - make sure to backup any project-specific rules
 3. **Git Ignore**: Consider adding `.cursor/` to your project's `.gitignore` if you want it managed only by npm
 

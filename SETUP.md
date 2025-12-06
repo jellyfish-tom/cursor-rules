@@ -23,7 +23,7 @@
 
 1. **Install the package**
    ```bash
-   npm install --save-dev @tomasz-morawski/cursor-rules
+   npm install --save-dev @jellyfish-tom/cursor-rules
    ```
 
 2. **Verify installation**
@@ -44,7 +44,7 @@ The `.cursor` directory should be automatically created in your project root.
    ```
 4. **Update in projects**:
    ```bash
-   npm update @tomasz-morawski/cursor-rules
+   npm update @jellyfish-tom/cursor-rules
    ```
 
 ## Local Development
@@ -56,6 +56,6 @@ To test locally without publishing:
 npm link
 
 # In your project
-npm link @tomasz-morawski/cursor-rules
+npm link @jellyfish-tom/cursor-rules
 ```
 
