@@ -25,8 +25,36 @@ priority: high
 - Move runtime validation to TypeScript types
 - Use exhaustive pattern matching with .exhaustive()
 - **ZERO COMMENTS POLICY**: Avoid unnecessary comments; prefer self-documenting code
-- Create documentation files only when explicitly requested
 - **Self-Documenting Code First**: If you want to add a comment, refactor the code instead
+
+## Documentation Files - STRICT PROHIBITION
+
+**CRITICAL RULE: NO DOCUMENTATION FILES BY DEFAULT**
+
+- **ABSOLUTE PROHIBITION**: Do NOT create any `.md`, `.txt`, `.rst`, or other documentation files unless explicitly requested by the user
+- **Zero Tolerance**: Creating documentation files without explicit request is a violation of this rule
+- **Examples of Prohibited Files**: README.md, CHANGELOG.md, NOTES.md, ANALYSIS.md, DOCUMENTATION.md, or any other markdown/documentation files
+- **Before Creating ANY Documentation File**: The user must explicitly ask for it (e.g., "create a README", "document this", "write documentation")
+- **Self-Documenting Code**: If you feel documentation is needed, improve code clarity instead
+- **Exception**: Only create documentation files when the user explicitly requests them with clear intent
+
+**WHAT TO DO INSTEAD**:
+- Write self-documenting code with clear names
+- Use TypeScript types to document structure
+- Provide analysis in your response text, not in files
+- If analysis is needed, include it in your response, not as a separate file
+
+**EXAMPLES**:
+```typescript
+// BAD - Creating theme-analysis.md without being asked
+// BAD - Creating README.md to explain the project
+// BAD - Creating CHANGELOG.md to track changes
+
+// GOOD - Only create .md files when user explicitly says:
+// "Create a README.md file"
+// "Document this in a markdown file"
+// "Write documentation for this feature"
+```
 
 ## Response Style
 

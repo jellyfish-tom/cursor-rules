@@ -72,6 +72,35 @@ if (isAuthenticated) {
 }
 ```
 
+## Documentation Files - ABSOLUTE PROHIBITION
+
+**CRITICAL RULE: NO DOCUMENTATION FILES UNLESS EXPLICITLY REQUESTED**
+
+- **ABSOLUTE PROHIBITION**: Do NOT create `.md`, `.txt`, `.rst`, or any other documentation files unless the user explicitly requests them
+- **Zero Tolerance**: Creating documentation files without explicit request violates this rule
+- **Prohibited File Types**: README.md, CHANGELOG.md, NOTES.md, ANALYSIS.md, DOCUMENTATION.md, or any markdown/documentation files
+- **Before Creating ANY Documentation File**: User must explicitly ask (e.g., "create a README", "document this", "write documentation")
+- **Self-Documenting Code First**: If documentation seems needed, improve code clarity instead
+- **Analysis in Response**: Provide analysis in your response text, not in separate files
+
+**WHAT TO DO INSTEAD**:
+- Write self-documenting code with clear names
+- Use TypeScript types to document structure
+- Provide analysis in your response text, not in files
+- If analysis is needed, include it in your response conversation
+
+**EXAMPLES**:
+```typescript
+// BAD - Creating theme-analysis.md without being asked
+// BAD - Creating README.md to explain the project
+// BAD - Creating CHANGELOG.md to track changes
+
+// GOOD - Only create .md files when user explicitly says:
+// "Create a README.md file"
+// "Document this in a markdown file"
+// "Write documentation for this feature"
+```
+
 ## Documentation-Driven Development
 
 - **Always Reference Official Docs**: Before implementing any feature, consult official documentation for the technology being used
