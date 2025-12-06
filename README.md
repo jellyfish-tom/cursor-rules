@@ -1,7 +1,5 @@
 # Cursor Rules
 
-> **Note:** This is a public-facing README. For internal setup and publishing instructions, see [SETUP.md](./SETUP.md).
-
 Shared Cursor IDE rules and guidelines for TypeScript/React projects.
 
 ## Installation
