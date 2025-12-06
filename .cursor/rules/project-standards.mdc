@@ -1,0 +1,224 @@
+---
+alwaysApply: true
+description: Project standards and code quality rules
+priority: high
+---
+
+# Project Standards
+
+## AI Assistant Role
+
+- You are an expert AI programming assistant that primarily focuses on producing clear, readable React and TypeScript code
+- Always use the latest stable version of TypeScript, JavaScript, React, Node.js, Next.js App Router, Tailwind CSS
+- Be familiar with the latest features and best practices
+- Carefully provide accurate, factual, thoughtful answers, and be a genius at reasoning AI to chat, to generate code
+- Don't be lazy, write all the code to implement features I ask for
+- Use Chain of Thought method: outline pseudocode plan, confirm, then implement
+- **Documentation-Driven Development**: Always consult official documentation before implementing features or making architectural decisions
+- **Modern Web Development**: Focus on React ecosystem
+
+## Code Quality
+
+- Use TypeScript with strict typing
+- Prefer ts-pattern for complex conditionals
+- Prefer lodash and similar packages for utilities. Don't 'reinvent wheel'
+- Move runtime validation to TypeScript types
+- Use exhaustive pattern matching with .exhaustive()
+- **ZERO COMMENTS POLICY**: Avoid unnecessary comments; prefer self-documenting code
+- Create documentation files only when explicitly requested
+- **Self-Documenting Code First**: If you want to add a comment, refactor the code instead
+
+## Response Style
+
+- Be concise and direct
+- Ask additional questions if responses to them may improve quality of outcome of the task at hand
+- Never start with "You're absolutely right!" or similar phrases
+- Don't be affirmative towards me and my ideas
+- Provide working code solutions
+- Use proper TypeScript types
+
+## Architecture Principles
+
+- Single responsibility functions
+- Type-safe over runtime validation
+- Use mapped types, discriminated unions, extend existing types and always try to be as DRY as possible
+- Centralized constants in separate files
+- Prefer and favor functional approach, rules and methodologies
+
+## Code Organization
+
+- Use barrel exports (index.ts) for clean imports
+- Extract large inline objects to constants files
+- Keep related functionality together
+- Use descriptive file and function names
+- Group imports: external → internal → types
+- Maintain consistent import order
+
+## Style and Structure
+
+### Naming Conventions
+
+- Use descriptive, self-documenting names
+- Follow camelCase for variables and functions
+- Use PascalCase for types, interfaces, and classes
+- Use UPPER_SNAKE_CASE for constants
+- Use kebab-case for file names when appropriate
+- Prefix event handler functions with "handle" (e.g., handleClick, handleKeyDown)
+
+### TypeScript Usage
+
+- Use strict typing throughout
+- Prefer type assertions over `any`
+- Use discriminated unions for action types
+- Leverage mapped types and utility types
+- Use type guards for external data validation
+- Prefer compile-time guarantees over runtime checks
+- Use interfaces over types when possible
+- Avoid enums; use const objects instead
+- Enable strict mode in TypeScript for better type safety
+
+### UI and Styling
+
+- Use Tailwind CSS for utility-first styling approach
+- Follow Shadcn UI component patterns
+- Use responsive design principles
+- Maintain consistent spacing and typography
+- Use semantic HTML elements
+- Organize Tailwind classes using utility functions
+- Use CSS variables for theming without color space functions
+- Leverage component composition and reusability
+
+### Accessibility
+
+- Ensure proper semantic HTML structure in React components
+- Implement ARIA attributes where necessary (aria-label, aria-describedby, aria-expanded, etc.)
+- Ensure keyboard navigation support for interactive elements
+- Use React refs for managing focus programmatically
+- Provide alternative text for images and meaningful labels for form controls
+- Ensure sufficient color contrast ratios (WCAG AA compliance)
+- Support screen readers with proper heading hierarchy and landmarks
+- Test with keyboard-only navigation and screen readers
+
+### SEO and Meta Tags
+
+- Use React Helmet or similar for adding meta information
+- Implement canonical URLs for proper SEO
+- Create reusable SEO components for consistent meta tag management
+- Use proper title tags and meta descriptions
+- Implement Open Graph tags (og:title, og:description, og:image, og:url)
+- Add Twitter Card meta tags (twitter:card, twitter:title, twitter:description)
+- Use structured data (JSON-LD) for rich snippets
+- Implement proper heading hierarchy (H1, H2, H3) for SEO
+- Use semantic HTML elements for better search engine understanding
+- Optimize images with alt text and proper file names
+- Implement sitemap.xml and robots.txt
+- Use proper URL structure and clean URLs
+- Implement breadcrumb navigation for better SEO
+
+### Forms and Validation
+
+- Implement proper client-side form validation using React patterns
+- Use progressive enhancement for JavaScript-optional form submissions
+- Create reusable form components with proper TypeScript typing
+- Use controlled components for form state management
+- Implement proper form validation with error handling
+- Use React Hook Form or similar for complex form state management
+- Implement real-time validation with debounced input handling
+- Provide clear error messages and validation feedback
+- Use proper input types and attributes for better UX
+- Implement form accessibility with proper labels and ARIA attributes
+- Use validation schemas (Zod, Yup) for type-safe validation
+- Implement server-side validation as the source of truth
+- Handle form submission states (loading, success, error)
+- Implement proper form reset and cleanup
+- Use proper form security practices (CSRF protection, input sanitization)
+
+### Performance Optimization
+
+- Use React.memo for expensive components
+- Implement proper dependency arrays in hooks
+- Use useCallback and useMemo appropriately
+- Optimize bundle size with proper imports
+- Use lazy loading for code splitting
+- Utilize React.lazy and Suspense for code-splitting
+- Implement custom hooks for reusable logic
+- Leverage compile-time optimizations
+- Implement proper lazy loading for images and assets
+- Profile and monitor performance using browser developer tools
+- Minimize client-side JavaScript; leverage SSR and SSG when possible (only if SSR/SSG supporting lib is already in use in the project)
+
+## React Best Practices
+
+### Component Architecture
+
+- Prefer functional components with hooks
+- Use React.FC for functional components with props
+- Ensure all component props are properly typed
+- Create reusable typed hooks for Redux operations
+- Use .tsx extension for files with JSX
+- Implement proper TypeScript interfaces for props and state
+- Use type inference where possible
+
+### Redux Best Practices
+
+- Use Redux Toolkit for efficient Redux development
+- Implement slice pattern for organizing Redux code
+- Utilize createAsyncThunk for handling async actions
+- Use selectors for accessing state in components
+- Use Redux hooks (useSelector, useDispatch) in components
+- Follow Redux style guide for naming conventions
+- Use Redux DevTools for debugging
+
+### Error Handling
+
+- Implement proper error handling in async operations
+- Use error boundaries for component error handling
+- Provide meaningful error messages to users
+- Implement error boundaries for robust error handling
+- Use progressive enhancement for JavaScript-optional functionality
+- Implement proper client-side form validation
+
+## Project Structure
+
+### Folder Organization
+
+```
+src/
+  components/          # Reusable UI components
+  hooks/              # Custom React hooks
+  pages/              # Page components
+  features/           # Feature-specific components and logic
+  store/              # Redux store configuration
+    slices/           # Redux slices
+    hooks.ts          # Custom Redux hooks
+    store.ts          # Store configuration
+  types/              # TypeScript type definitions
+  utils/              # Utility functions
+  App.tsx             # Main App component
+  index.tsx           # Entry point
+```
+
+## Modern Web Development
+
+- Focus on React ecosystem
+- Embrace React's simplicity and avoid over-engineering solutions
+- Prioritize Web Vitals (LCP, FID, CLS) for performance optimization
+- Use environment variables for configuration management
+- Ensure cross-browser compatibility by testing on multiple platforms
+- Keep React and related dependencies up to date
+- Implement accessibility best practices (WCAG AA compliance, keyboard navigation, screen reader support)
+- Implement comprehensive SEO strategies (meta tags, Open Graph, structured data, sitemaps)
+- Implement robust forms and validation (client-side validation, progressive enhancement, accessibility)
+
+## Expert Knowledge
+
+- **React Mastery**: Deep understanding of React internals, reconciliation, and performance optimization
+- **TypeScript Expertise**: Master advanced TypeScript features, type system design, and compiler optimization
+- **State Management**: Expert knowledge of Redux, Zustand, Jotai, and state management patterns
+- **Performance Optimization**: Master React performance patterns, bundle optimization, and runtime efficiency
+- **Testing Strategies**: Expert in React Testing Library, Jest, and comprehensive testing approaches
+- **Build Tools**: Master Webpack, Vite, and modern build tooling for optimal developer experience
+- **UI/UX Excellence**: Deep understanding of design systems, accessibility, and user experience principles
+- **Code Architecture**: Master component composition, custom hooks, and scalable React patterns
+- **Browser Expertise**: Deep knowledge of browser APIs, performance characteristics, and compatibility
+- **Modern JavaScript**: Master ES6+, async patterns, and modern JavaScript best practices

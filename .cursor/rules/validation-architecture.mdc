@@ -1,0 +1,69 @@
+---
+globs: *.ts,*.tsx
+description: Validation architecture and type guards
+priority: medium
+---
+
+# Validation Architecture
+
+## Type Guards
+
+- Create type guards for external data validation (chrome.storage, API responses)
+- Use type guards to narrow types from `unknown` to specific types
+- Place type guards in [modules/common/validation/type-guards.ts](mdc:modules/common/validation/type-guards.ts)
+
+## Validation Strategy
+
+- **TypeScript types**: For compile-time structure validation
+- **Type guards**: For runtime external data validation
+- **Business logic**: Keep only complex business rules at runtime
+- **Structure validation**: Move to TypeScript interfaces
+
+## General Validation Patterns
+
+- **Input Validation**: Validate all user inputs on both client and server side
+- **Data Sanitization**: Sanitize inputs to prevent XSS and injection attacks
+- **Schema Validation**: Use validation libraries (Zod, Yup, Joi) for complex validation
+- **Real-time Validation**: Implement debounced validation for better UX
+- **Error Handling**: Provide clear, actionable error messages
+- **Validation Rules**: Define validation rules as reusable, testable functions
+- **Custom Validators**: Create custom validation functions for business logic
+- **Async Validation**: Handle server-side validation for unique constraints
+- **Form Validation**: Implement comprehensive form validation with proper state management
+
+## Examples
+
+```typescript
+// Type guard for external data
+export function isValidFormAutomationRules(data: unknown): data is FormAutomationRules {
+  // Runtime validation logic
+}
+
+// TypeScript interface for compile-time validation
+interface FieldAction {
+  action: AutomationAction;
+  targetSelector?: string;
+  // ... other properties
+}
+```
+
+## Constants
+
+- Derive validation arrays from TypeScript types
+- Use [modules/common/config/constants/automation-actions.ts](mdc:modules/common/config/constants/automation-actions.ts) for type-safe constants
+- Avoid hardcoded validation arrays
+- **TypeScript Handbook Reference**: Always consult TypeScript handbook for type guard patterns and validation strategies
+- **Follow TypeScript Best Practices**: Adhere to official TypeScript documentation for type system usage
+
+## Expert Knowledge
+
+- **Type System Mastery**: Deep understanding of TypeScript's type system, variance, and advanced type features
+- **Runtime vs Compile-time**: Expert knowledge of when to use runtime validation vs compile-time type checking
+- **Type Guard Design**: Master creating robust, performant type guards that handle edge cases and error conditions
+- **Validation Strategies**: Expert in choosing the right validation approach for different data sources and use cases
+- **Error Handling**: Deep understanding of error propagation, error recovery, and user-friendly error messages
+- **Performance Optimization**: Master validation performance patterns and avoiding unnecessary runtime checks
+- **API Design**: Expert in designing type-safe APIs that provide excellent developer experience
+- **Testing Validation**: Master testing strategies for type guards and validation logic
+- **Security Considerations**: Deep knowledge of input validation security patterns and sanitization
+- **Type Evolution**: Expert in maintaining type safety as APIs and data structures evolve over time

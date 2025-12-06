@@ -1,0 +1,120 @@
+---
+globs: *.ts,*.js,*.json,manifest.json
+description: Chrome extension development patterns and best practices
+priority: medium
+---
+
+# Chrome Extension Development
+
+## Expert Knowledge
+
+- **Chrome Extension Mastery**: Deep understanding of Chrome Extension APIs, Manifest V3, and extension architecture
+- **Security Expertise**: Expert knowledge of Content Security Policy, permission management, and secure extension development
+- **Performance Optimization**: Master extension performance patterns, lazy loading, and resource management
+- **Cross-Platform Compatibility**: Deep understanding of browser differences and compatibility strategies
+- **User Experience**: Expert in designing intuitive extension interfaces and user workflows
+- **API Integration**: Master Chrome APIs, message passing, storage, and external service integration
+- **Testing Strategies**: Expert in testing Chrome extensions, mocking Chrome APIs, and automated testing
+- **Deployment & Distribution**: Deep knowledge of Chrome Web Store policies, packaging, and distribution
+- **Modern Web Technologies**: Expert in TypeScript, modern JavaScript, CSS, and web development best practices
+- **Troubleshooting**: Master debugging Chrome extensions, performance profiling, and issue resolution
+
+## Chrome Extension Code Style
+
+- Structure files with clear separation: background vs content vs popup vs options
+- Implement modular architecture with clean abstractions and separated concerns
+- Use descriptive variable names specific to extension context (e.g., isExtensionEnabled, hasPermission)
+- **Chrome Extension Documentation**: Always reference Chrome Extensions documentation for API usage and best practices
+- **Manifest V3 Compliance**: Follow official Manifest V3 documentation for security and functionality requirements
+
+## TypeScript Usage
+
+- Encourage TypeScript for type safety and better developer experience
+- Use interfaces for defining message structures and API responses
+- Leverage TypeScript's union types and type guards for runtime checks
+- Leverage all advanced TypeScript features, patterns and utility functions
+
+## Extension Architecture
+
+- Implement clear separation of concerns between different extension components
+- Use message passing for communication between different parts of the extension
+- Implement proper state management using chrome.storage API
+- Use [modules/common/background/](mdc:modules/common/background/) for background functionality
+- Use [page-controller-modular.ts](mdc:page-controller-modular.ts) for page interaction
+
+## Manifest and Permissions
+
+- Use the latest manifest version (v3) unless there's a specific need for v2
+- Follow the principle of least privilege for permissions
+- Implement optional permissions where possible
+
+## Security and Privacy
+
+- Implement Content Security Policy (CSP) in manifest.json
+- Use HTTPS for all network requests
+- Sanitize user inputs and validate data from external sources
+- Implement proper error handling and logging
+- Minimize and obfuscate distribution builds
+
+## UI and Styling
+
+- Create responsive designs for popup and options pages
+- Use CSS Grid or Flexbox for layouts
+- Implement consistent styling across all extension UI elements
+- Use Tailwind CSS for styling
+- Follow Shadcn UI component patterns
+
+## Performance Optimization
+
+- Minimize resource usage in background scripts
+- Use event pages instead of persistent background pages when possible
+- Implement lazy loading for non-critical extension features
+- Optimize content scripts to minimize impact on web page performance
+
+## Browser API Usage
+
+- Utilize chrome.\* APIs effectively (e.g., chrome.tabs, chrome.storage, chrome.runtime)
+- Implement proper error handling for all API calls
+- Use chrome.alarms for scheduling tasks instead of setInterval
+- Chrome APIs return `unknown` types - use type guards
+- Always validate before using external data
+
+## Cross-browser Compatibility
+
+- Use WebExtensions API for cross-browser support where possible
+- Implement graceful degradation for browser-specific features
+
+## Testing and Debugging
+
+- Utilize Chrome DevTools for debugging
+- Implement unit tests for core extension functionality
+- Use Chrome's built-in extension loading for testing during development
+
+## Context-Aware Development
+
+- Always consider the whole project context when providing suggestions or generating code
+- Avoid duplicating existing functionality or creating conflicting implementations
+- Ensure that new code integrates seamlessly with the existing project structure and architecture
+- Before adding new features or modifying existing ones, review the current project state to maintain consistency and avoid redundancy
+- When answering questions or providing solutions, take into account previously discussed or implemented features to prevent contradictions or repetitions
+
+## Examples
+
+```typescript
+// Storage with type safety
+const result = await chrome.storage.local.get([storageKey]);
+if (!isValidFormAutomationRules(result[storageKey])) {
+  throw new Error("Invalid rules structure in storage");
+}
+const rules = result[storageKey] as FormAutomationRules;
+
+// Message passing with TypeScript
+interface MessageRequest {
+  action: "GET_RULES" | "SAVE_RULES";
+  data?: FormAutomationRules;
+}
+
+chrome.runtime.onMessage.addListener((message: MessageRequest, sender, sendResponse) => {
+  // Handle message with type safety
+});
+```

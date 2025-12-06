@@ -1,0 +1,52 @@
+---
+globs: *.ts,*.tsx
+description: TypeScript patterns and ts-pattern usage
+priority: medium
+---
+
+# TypeScript Patterns and ts-pattern Usage
+
+## Pattern Matching
+
+- Always use `ts-pattern` for complex conditionals instead of switch statements
+- Use `.exhaustive()` for complete pattern coverage
+- Prefer discriminated unions over runtime type checking
+
+## Examples
+
+```typescript
+import { match } from "ts-pattern";
+
+// Instead of switch statements
+switch (action.type) {
+  case "fill":
+    return handleFill(action);
+  case "click":
+    return handleClick(action);
+}
+
+// Use ts-pattern
+match(action).with({ type: "fill" }, handleFill).with({ type: "click" }, handleClick).exhaustive();
+```
+
+## Type Safety with ts-pattern
+
+- Use callback parameters in ts-pattern to get narrowed types
+- Example: `.with({ action: "select" }, selectAction => { /* selectAction is SelectAction */ })`
+- Leverage TypeScript's type narrowing in pattern matching
+- Use discriminated unions as input to ts-pattern for maximum type safety
+- **ts-pattern Documentation**: Always reference ts-pattern documentation for advanced patterns and best practices
+- **Pattern Matching Guidelines**: Follow official ts-pattern examples and recommendations for optimal usage
+
+## Expert Knowledge
+
+- **Pattern Matching Mastery**: Deep understanding of functional programming patterns and when to use each approach
+- **Type System Design**: Expert in designing type-safe APIs using discriminated unions and type guards
+- **Performance Considerations**: Understand the performance implications of pattern matching vs traditional conditionals
+- **Error Handling Patterns**: Master error handling with Result types, Either monads, and railway-oriented programming
+- **Functional Programming**: Expert knowledge of immutability, pure functions, and functional composition
+- **TypeScript Advanced Types**: Master conditional types, mapped types, and template literal types for complex pattern matching
+- **Code Readability**: Design patterns that make code self-documenting and easy to reason about
+- **Testing Patterns**: Create testable, predictable code using pattern matching and functional approaches
+- **Refactoring Strategies**: Use pattern matching to safely refactor complex conditional logic
+- **Domain Modeling**: Apply pattern matching to model complex business logic and state machines

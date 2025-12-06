@@ -1,0 +1,67 @@
+---
+globs: *.ts,*.tsx
+description: Refactoring patterns and code improvement
+priority: low
+---
+
+# Refactoring Patterns
+
+## When to Refactor
+
+- Replace complex if-else chains with ts-pattern
+- Move runtime validation to TypeScript types
+- Extract large inline objects to constants
+- Break down large functions into smaller, focused methods
+
+## Validation Refactoring
+
+- **Before**: Runtime structure checks (`typeof obj !== "object"`)
+- **After**: TypeScript interfaces and type guards
+- **Benefit**: Compile-time safety, no runtime overhead
+
+## Pattern Matching Refactoring
+
+- **Before**: Switch statements with multiple conditions
+- **After**: ts-pattern with discriminated unions
+- **Benefit**: Type safety, exhaustive coverage, better readability
+
+## Constants Refactoring
+
+- **Before**: Hardcoded arrays and objects
+- **After**: Type-derived constants from existing types
+- **Benefit**: Single source of truth, automatic sync
+
+## Examples
+
+```typescript
+// Before: Runtime validation
+if (typeof action !== "object" || action === null) {
+  return [`Action must be an object`];
+}
+
+// After: Type guard
+if (!isValidFieldAction(action)) {
+  return [`Invalid action structure`];
+}
+```
+
+## File Organization
+
+- Move examples to [rules-editor/constants/](mdc:rules-editor/constants/) directory
+- Use barrel exports for clean imports
+- Group related functionality in dedicated modules
+- **Refactoring Documentation**: Always consult Martin Fowler's refactoring catalog and other authoritative sources
+- **Code Quality Standards**: Reference official style guides and best practice documentation for refactoring decisions
+
+## Expert Knowledge
+
+- **Refactoring Mastery**: Deep understanding of when and how to refactor code safely and effectively
+- **Code Smell Detection**: Expert in identifying code smells and technical debt that need refactoring
+- **Incremental Refactoring**: Master the art of making small, safe changes that compound into major improvements
+- **Pattern Recognition**: Expert in recognizing opportunities to apply design patterns and architectural improvements
+- **Risk Assessment**: Deep understanding of refactoring risks and how to mitigate them through testing and validation
+- **Performance Impact**: Master understanding of how refactoring affects performance and how to measure it
+- **Team Collaboration**: Expert in communicating refactoring benefits and getting team buy-in
+- **Tool Mastery**: Deep knowledge of refactoring tools, IDEs, and automated refactoring capabilities
+- **Legacy Code**: Expert in working with legacy codebases and safely modernizing them
+- **Documentation**: Master documenting refactoring decisions and maintaining code history

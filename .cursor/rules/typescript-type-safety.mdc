@@ -1,0 +1,148 @@
+# TypeScript Type Safety Rules
+
+## Core Principle: Preserve Types, Never Drop Them
+
+When working with TypeScript, **ALWAYS** prioritize preserving type information throughout the entire code path. Avoid type erasure strategies as they defeat the purpose of using TypeScript.
+
+## Forbidden Patterns (Anti-Patterns)
+
+### ❌ NEVER Use These Type Avoidance Strategies:
+- `any` - Complete type erasure
+- `unknown` - Type erasure with runtime checks
+- `never` - Impossible type assertions
+- `as any` - Type casting to avoid type errors
+- `as unknown as T` - Double type casting
+- `@ts-ignore` - Suppressing type errors
+- `@ts-expect-error` - Expecting type errors
+
+### ❌ NEVER Use These Workarounds:
+- Manual union type definitions when types can be inferred
+- Type assertions to "fix" type errors
+- Suppressing linting errors about types
+- Using `any` in generic constraints
+
+## Required Patterns (Best Practices)
+
+### ✅ ALWAYS Use These Type-Safe Approaches:
+
+#### 1. **Type Inference First**
+```typescript
+// ✅ GOOD: Let TypeScript infer types
+const actions = [
+  createActionWithCallback((callback) => getPosId(callback)),
+  createActionWithCallback((callback) => getDebitCardInfo(callback)),
+];
+
+// ❌ BAD: Manual union types
+type UserAction = GetPosIdPromiseAction | GetDebitCardInfoPromiseAction;
+const actions: ActionCreator<UserAction>[] = [...];
+```
+
+#### 2. **Utility Types for Type Extraction**
+```typescript
+// ✅ GOOD: Extract types programmatically
+type ExtractActionType<T> = T extends ActionCreator<infer U> ? U : never;
+
+// ❌ BAD: Manual type definitions
+type ActionType = SomeAction | AnotherAction;
+```
+
+#### 3. **Generic Constraints with Proper Types**
+```typescript
+// ✅ GOOD: Constrain generics with meaningful types
+export const dispatchMultipleActions = <T extends readonly ActionCreator<unknown>[]>(
+  dispatch: (action: ExtractActionType<T[number]>) => void,
+  actions: T,
+  onAllComplete: () => void,
+): void => {
+  // Implementation preserves all types
+};
+
+// ❌ BAD: Using any in constraints
+export const dispatchMultipleActions = <T extends readonly ActionCreator<any>[]>(
+  dispatch: (action: any) => void,
+  actions: T,
+  onAllComplete: () => void,
+): void => {
+  // Types are lost
+};
+```
+
+#### 4. **Conditional Array Construction**
+```typescript
+// ✅ GOOD: Use spread syntax for conditional elements
+const actions = [
+  createActionWithCallback((callback) => getPosId(callback)),
+  createActionWithCallback((callback) => getDebitCardInfo(callback)),
+  ...(customerUuid ? [createActionWithCallback((callback) => getApiGatewayToken({ customerUuid, callback }))] : []),
+];
+
+// ❌ BAD: Push operations that break type inference
+const actions = [action1, action2];
+if (condition) {
+  actions.push(action3); // Breaks type inference
+}
+```
+
+## Implementation Strategy
+
+### When Facing Type Errors:
+
+1. **First**: Analyze what types are actually needed
+2. **Second**: Create utility types to extract/infer those types
+3. **Third**: Use generic constraints to preserve type information
+4. **Fourth**: Test that types flow through the entire chain
+5. **Last Resort**: Only if absolutely impossible, document why type erasure is necessary
+
+### Type Flow Verification:
+
+Before considering any solution complete, verify:
+- [ ] Types are preserved from input to output
+- [ ] No `any`, `unknown`, or `never` in the type chain
+- [ ] IntelliSense works correctly
+- [ ] Refactoring is type-safe
+- [ ] No type assertions are needed
+
+## Examples of Proper Type-Safe Solutions
+
+### Generic Function with Type Preservation
+```typescript
+// ✅ GOOD: Types flow through the entire function
+type ExtractReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
+
+export const processActions = <T extends readonly ((...args: any[]) => any)[]>(
+  actions: T,
+  processor: (result: ExtractReturnType<T[number]>) => void,
+): void => {
+  actions.forEach((action) => {
+    const result = action();
+    processor(result as ExtractReturnType<T[number]>);
+  });
+};
+```
+
+### Conditional Type Construction
+```typescript
+// ✅ GOOD: Conditional types preserve all type information
+type ConditionalActions<T extends boolean> = T extends true 
+  ? [ActionCreator<ActionA>, ActionCreator<ActionB>, ActionCreator<ActionC>]
+  : [ActionCreator<ActionA>, ActionCreator<ActionB>];
+
+export const createActions = <T extends boolean>(includeExtra: T): ConditionalActions<T> => {
+  const base = [actionA, actionB] as const;
+  return includeExtra ? [...base, actionC] as ConditionalActions<T> : base as ConditionalActions<T>;
+};
+```
+
+## Success Criteria
+
+A type-safe solution is successful when:
+1. **Zero type erasure**: No `any`, `unknown`, or `never` in the solution
+2. **Full type flow**: Types are preserved from input to output
+3. **IntelliSense works**: Autocomplete and type hints function correctly
+4. **Refactoring safe**: Changes to types are caught at compile time
+5. **Self-documenting**: The types themselves explain the intent
+
+## Remember
+
+> **TypeScript's power comes from its type system. When we avoid types, we avoid the benefits of TypeScript. Always find a way to make types work for you, not against you.**

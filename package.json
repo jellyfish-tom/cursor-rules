@@ -1,0 +1,35 @@
+{
+  "name": "@tomasz-morawski/cursor-rules",
+  "version": "1.0.0",
+  "description": "Shared Cursor IDE rules and guidelines for TypeScript/React projects",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node scripts/install.js",
+    "prepublishOnly": "npm run test",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [
+    "cursor",
+    "cursor-ide",
+    "rules",
+    "typescript",
+    "react",
+    "coding-guidelines"
+  ],
+  "author": "Tomasz Morawski",
+  "license": "MIT",
+  "files": [
+    ".cursor/**/*",
+    "scripts/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomasz-morawski/cursor-rules.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
+

@@ -1,0 +1,137 @@
+---
+globs: *.tsx,*.ts
+description: TypeScript React specific patterns and best practices
+priority: medium
+---
+
+# TypeScript React Best Practices
+
+## Component Patterns
+
+- Prefer functional components with hooks
+- Use React.FC for functional components with props
+- Utilize useState and useEffect hooks for state and side effects
+- Implement proper TypeScript interfaces for props and state
+- Use type inference where possible
+- Create .tsx files for React components
+- Use .ts files for component logic and state machines
+- Implement proper component composition and reusability
+- Use React's props for data passing
+- Leverage React's reactive patterns for local state management
+
+## Performance Optimization
+
+- Use React.memo for performance optimization when needed
+- Implement custom hooks for reusable logic
+- Utilize React.lazy and Suspense for code-splitting
+- Use useCallback and useMemo appropriately
+- Leverage React's compile-time optimizations
+- Implement proper lazy loading for images and assets
+- Profile and monitor performance using browser developer tools
+- Minimize client-side JavaScript; leverage SSR and SSG when possible (only if SSR/SSG supporting lib is already in use in the project)
+
+## TypeScript Integration
+
+- Utilize TypeScript's strict mode
+- Use .tsx extension for files with JSX
+- Implement strict TypeScript checks
+- Leverage TypeScript's union types and type guards for runtime checks
+- Use interfaces for defining component props and state structures
+- Use interfaces over types when possible
+- Avoid enums; use const objects instead
+- Enable strict mode in TypeScript for better type safety
+
+## Error Handling
+
+- Implement error boundaries for robust error handling
+- Use proper error handling in async operations
+- Provide meaningful error messages to users
+- Use progressive enhancement for JavaScript-optional functionality
+- Implement proper client-side form validation
+
+## Code Quality
+
+- Follow React and TypeScript best practices and naming conventions
+- Use ESLint with TypeScript and React plugins for code quality
+- Implement proper dependency arrays in hooks
+- Use descriptive names for components, props, and state
+- **Reference Official Documentation**: Always consult React and TypeScript official documentation for implementation patterns
+- **Follow React Docs Guidelines**: Adhere to patterns and recommendations from react.dev and TypeScript handbook
+
+## Forms and Validation
+
+- Implement proper client-side form validation using React patterns
+- Use progressive enhancement for JavaScript-optional form submissions
+- Create reusable form components with proper TypeScript typing
+- Use controlled components for form state management
+- Implement proper form validation with error handling
+
+## SEO and Meta Tags
+
+- Use React Helmet or similar for adding meta information
+- Implement canonical URLs for proper SEO
+- Create reusable SEO components for consistent meta tag management
+- Use proper title tags and meta descriptions
+- Implement Open Graph tags (og:title, og:description, og:image, og:url)
+- Add Twitter Card meta tags (twitter:card, twitter:title, twitter:description)
+- Use structured data (JSON-LD) for rich snippets
+- Implement proper heading hierarchy (H1, H2, H3) for SEO
+- Use semantic HTML elements for better search engine understanding
+- Optimize images with alt text and proper file names
+
+## Accessibility
+
+- Ensure proper semantic HTML structure in React components
+- Implement ARIA attributes where necessary
+- Ensure keyboard navigation support for interactive elements
+- Use React refs for managing focus programmatically
+
+## Examples
+
+```typescript
+import React, { useState, useCallback } from "react";
+
+// Functional component with TypeScript
+interface ButtonProps {
+  onClick: () => void;
+  children: React.ReactNode;
+  variant?: "primary" | "secondary";
+}
+
+const Button: React.FC<ButtonProps> = ({ onClick, children, variant = "primary" }) => {
+  return (
+    <button className={`btn btn-${variant}`} onClick={onClick}>
+      {children}
+    </button>
+  );
+};
+
+// Custom hook with TypeScript
+interface UseCounterReturn {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+}
+
+const useCounter = (initialValue: number = 0): UseCounterReturn => {
+  const [count, setCount] = useState(initialValue);
+
+  const increment = useCallback(() => setCount(prev => prev + 1), []);
+  const decrement = useCallback(() => setCount(prev => prev - 1), []);
+
+  return { count, increment, decrement };
+};
+```
+
+## Expert Knowledge
+
+- **React Internals**: Deep understanding of React's reconciliation algorithm, fiber architecture, and rendering lifecycle
+- **TypeScript Advanced Features**: Master conditional types, mapped types, template literal types, and advanced type manipulation
+- **Performance Optimization**: Expert in React.memo, useMemo, useCallback, and when to use each optimization technique
+- **Custom Hooks Mastery**: Design reusable, composable hooks with proper TypeScript typing and dependency management
+- **State Management Patterns**: Expert knowledge of useState, useReducer, Context API, and when to use each approach
+- **Component Design**: Master compound components, render props, higher-order components, and composition patterns
+- **Error Boundaries**: Deep understanding of error boundary implementation, error recovery, and user experience
+- **Testing Excellence**: Master React Testing Library patterns, mocking strategies, and comprehensive test coverage
+- **Bundle Optimization**: Expert in code splitting, lazy loading, tree shaking, and bundle analysis
+- **Accessibility**: Deep knowledge of ARIA patterns, keyboard navigation, and inclusive design principles
